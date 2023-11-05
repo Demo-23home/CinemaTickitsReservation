@@ -1,74 +1,72 @@
-Cinema Tickets Reservation System
-<div align="center">
-  <img src="link_to_your_project_logo_or_screenshot" alt="Project Logo or Screenshot">
-</div>
-This repository contains a simple cinema ticket reservation system that serves as a reference for REST Framework, authentication classes, and permission classes. It provides endpoints for various functionalities related to cinema ticket reservation.
+# Cinema Tickets Reservation System
 
-Endpoints
-1. No Model Endpoints
-1.1 GET /django/jsonresponsenomodel/
-This endpoint returns a JSON response without using any Django models.
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-1.2 GET /django/jsonresponsefrommodel/
-This endpoint returns a JSON response using Django models.
+This is a Django REST Framework-based cinema tickets reservation system project.
 
-2. Function-Based Views (FBV) Endpoints
-2.1 GET /rest/fbv_list/
-This endpoint uses function-based views to list items.
+## Project Overview
 
-2.2 GET /rest/fbv_pk/<int:pk>
-This endpoint uses function-based views to retrieve a specific item by its primary key.
+This project serves as a reference for REST Framework, authentication classes, and permission classes. It provides various endpoints for cinema ticket reservation, including functionalities like listing movies, creating reservations, and managing permissions.
 
-3. Class-Based Views (CBV) Endpoints
-3.1 GET, POST /rest/cbv
-This endpoint uses class-based views to handle list and create operations.
+## Features
 
-3.2 GET, PUT, DELETE /rest/cbv_pk/<int:pk>/
-This endpoint uses class-based views to handle retrieve, update, and delete operations for a specific item.
+- **No Model Endpoints:** JSON responses without using Django models.
+- **Function-Based Views (FBV) Endpoints:** Using function-based views for listing and retrieving items.
+- **Class-Based Views (CBV) Endpoints:** Using class-based views for handling list, create, retrieve, update, and delete operations.
+- **Mixins Endpoints:** Utilizing mixins for handling CRUD operations.
+- **Generics Endpoints:** Using generic views for handling CRUD operations.
+- **Viewsets Endpoints:** Using viewsets and routers for handling CRUD operations.
+- **Find Movie Endpoint:** Endpoint for finding a specific movie.
+- **New Reservation Endpoint:** Endpoint for creating a new reservation.
+- **REST Auth URLs:** Authentication views provided by REST framework.
+- **Token Authentication:** Endpoint for obtaining authentication tokens.
+- **Post Permissions Endpoints:** Endpoints for operations based on user permissions.
 
-4. Mixins Endpoints
-4.1 GET, POST /rest/mixins/
-This endpoint uses mixins to handle list and create operations.
+## Getting Started
 
-4.2 GET, PUT, DELETE /rest/mixins_pk/<int:pk>/
-This endpoint uses mixins to handle retrieve, update, and delete operations for a specific item.
+To set up and run this project locally, follow these steps:
 
-5. Generics Endpoints
-5.1 GET, POST /rest/generics/
-This endpoint uses generic views to handle list and create operations.
+1. **Clone the repository:**
 
-5.2 GET, PUT, DELETE /rest/generic_pk/<int:pk>/
-This endpoint uses generic views to handle retrieve, update, and delete operations for a specific item.
+   ```bash
+   git clone https://github.com/Demo-23home/CinemaTickitsReservation.git
+   cd CinemaTickitsReservation
 
-6. Viewsets Endpoints
-6.1 GET, POST /rest/viewsets/
-This endpoint uses viewsets and routers to handle list and create operations.
+1.Create a virtual environment and install dependencies:
+```
+python -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+pip install -r requirements.txt
+```
+2.Apply migrations and create a superuser:
+```
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+```
+3.Start the development server:
+```
+python manage.py runserver
+```
+API Endpoints
+List Movies
+URL: /api/movies/
+HTTP Method: GET
+Description: List all available movies.
+Create Reservation
+URL: /api/reservations/
+HTTP Method: POST
+Description: Create a new reservation.
+Find Movie
+URL: /api/find_movie/
+HTTP Method: GET
+Description: Find a specific movie by its title.
+Authentication
+URL: /api-token-auth/
+HTTP Method: POST
+Description: Obtain an authentication token.
+Contributing
+If you'd like to contribute to this project, please follow our contribution guidelines.
 
-7. Find Movie Endpoint
-7.1 GET /fbv/find_movie
-This endpoint allows you to find a specific movie.
-
-8. New Reservation Endpoint
-8.1 POST /new_reservation/
-This endpoint enables you to create a new reservation.
-
-9. REST Auth URLs
-9.1 POST /api-auth/
-This endpoint provides URLs for REST framework authentication views.
-
-10. Token Authentication
-10.1 POST /api-token-auth/
-This endpoint allows users to obtain an authentication token.
-
-11. Post Permissions Endpoints
-11.1 GET, PUT, DELETE /post/<int:pk>
-This endpoint allows operations on a specific post based on user permissions.
-
-11.2 GET, POST /post/
-This endpoint allows listing and creating posts based on user permissions.
-
-Usage
-To utilize these endpoints, make HTTP requests to the respective URLs using appropriate methods (GET, POST, PUT, DELETE) based on the desired operation.
-
-Feel free to explore the code to understand the implementation details of the REST Framework, authentication classes, and permission classes used in this project. If you have any questions or need further assistance, don't hesitate to reach out. Happy coding!
-
+License
+This project is licensed under the MIT License.
