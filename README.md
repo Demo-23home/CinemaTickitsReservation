@@ -48,25 +48,28 @@ python manage.py createsuperuser
 ```
 python manage.py runserver
 ```
-API Endpoints
-List Movies
-URL: /api/movies/
-HTTP Method: GET
-Description: List all available movies.
-Create Reservation
-URL: /api/reservations/
-HTTP Method: POST
-Description: Create a new reservation.
-Find Movie
-URL: /api/find_movie/
-HTTP Method: GET
-Description: Find a specific movie by its title.
-Authentication
-URL: /api-token-auth/
-HTTP Method: POST
-Description: Obtain an authentication token.
-Contributing
-If you'd like to contribute to this project, please follow our contribution guidelines.
+**API Endpoints**
+1.List Movies:
 
-License
-This project is licensed under the MIT License.
+*URL: /api/movies/
+*HTTP Method: GET
+*Description: List all available movies.
+
+2.Create Reservation:
+
+*URL: /api/reservations/
+*HTTP Method: POST
+*Description: Create a new reservation.
+
+3.Find Movie:
+
+*URL: /api/find_movie/
+*HTTP Method: GET
+*Description: Find a specific movie by its title.
+
+4.Authentication:
+
+*URL: /api-token-auth/
+*HTTP Method: POST
+*Description: Obtain an authentication token.
+
