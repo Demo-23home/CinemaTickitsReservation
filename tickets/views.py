@@ -2,14 +2,17 @@
 from django.http import JsonResponse, Http404
 from django.shortcuts import render
 #Internal Imports
-from .models import Guest, Movie, Reservation
-from .serializers import GuestSerializer, MovieSerailizer, ReservationSerializer
+from .models import Guest, Movie, Reservation, Post
+from .serializers import GuestSerializer, MovieSerailizer, ReservationSerializer, PostSerializer
+from .permissions import IsAuthorOrReadOnly
 #RestFramework imports
 from rest_framework.decorators import api_view
 from rest_framework import status, filters
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import generics, mixins, viewsets
+from rest_framework.authentication import BasicAuthentication, TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 #1 without REST and no ModleQuery
@@ -186,14 +189,16 @@ class MixinsPk(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.Destro
 class GenericListCreate(generics.ListCreateAPIView):
     queryset = Guest.objects.all()
     serializer_class = GuestSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 #6.2 get, put, delete
 class GenericPk(generics.RetrieveUpdateAPIView):
     queryset = Guest.objects.all()
     serializer_class = GuestSerializer
-
-
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 #7 Viewsets
@@ -236,13 +241,23 @@ def create_reservation(request):
     )
 
     guest = Guest()
+    # guest.id = request.data['id']
     guest.name = request.data['name']
     guest.phone = request.data['phone']
     guest.save()
 
     reservation = Reservation()
-    reservation.geust = guest
+    reservation.guest = guest
     reservation.movie = movie
     reservation.save()
     
     return Response(status=status.HTTP_201_CREATED)
+
+
+
+
+
+class Post_pk(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthorOrReadOnly]
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer

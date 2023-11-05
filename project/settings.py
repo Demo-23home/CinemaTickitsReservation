@@ -41,12 +41,21 @@ INSTALLED_APPS = [
     "tickets",
     #External Apps
     "rest_framework",
+    "rest_framework.authtoken",
+    
 
 ]
 
 
-REST_FRAMEWORK = {}
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES":
+    ["rest_framework.authentication.TokenAuthentication"],
+    # "DEFAULT_PERMISSION_CLASSES":
+    # ["rest_framework.permissions.IsAuthenticated"],
+}
 
+
+# IsAuthenticated // IsAdminUser // IsAuthenticatedReadOnly
 
 
 MIDDLEWARE = [

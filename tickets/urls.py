@@ -2,6 +2,8 @@ from django.db import router
 from django.urls import path, include
 from .views import *
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken.views import obtain_auth_token
+
 router = DefaultRouter()
 router.register('guests', GeuestViewSet)
 router.register('movies', MovieViewSet)
@@ -38,6 +40,13 @@ urlpatterns = [
     path('fbv/find_movie',find_movie),
     #9 new reservation
     path('new_reservation/',create_reservation),
+    #10 rest auth url
+    path('api-auth/',include('rest_framework.urls')), 
+    #11 Token Authentiaction
+    path('api-token-auth/', obtain_auth_token),
+    #12 post permissions
+    path('post/<int:pk>',Post_pk.as_view()),
+    path('post/',Post_pk.as_view()),
 ]
 
 
