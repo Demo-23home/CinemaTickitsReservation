@@ -1,80 +1,74 @@
 Cinema Tickets Reservation System
-Welcome to the Cinema Tickets Reservation System repository! This project serves as a comprehensive reference guide for REST Framework, Authentication Classes, and Permission Classes in Django, specifically tailored to your needs. Here's a detailed guide to help you understand the structure and functionality of this system.
+<div align="center">
+  <img src="link_to_your_project_logo_or_screenshot" alt="Project Logo or Screenshot">
+</div>
+This repository contains a simple cinema ticket reservation system that serves as a reference for REST Framework, authentication classes, and permission classes. It provides endpoints for various functionalities related to cinema ticket reservation.
 
-1.Table of Contents
-2.Introduction
-3.Features
-4.Technologies Used
-5.Setup Instructions
-6.Project Structure
-7.API Endpoints
-8.Authentication and Permissions
-9.Usage Examples
-10.Contributing
-11.License
+Endpoints
+1. No Model Endpoints
+1.1 GET /django/jsonresponsenomodel/
+This endpoint returns a JSON response without using any Django models.
 
-Introduction
-The Cinema Tickets Reservation System is a simple yet robust web application that allows users to reserve cinema tickets online. It demonstrates the implementation of RESTful APIs, various authentication mechanisms, and permission classes in Django. This project is designed to be your go-to reference for understanding these concepts in-depth.
+1.2 GET /django/jsonresponsefrommodel/
+This endpoint returns a JSON response using Django models.
 
-Features
-User authentication and authorization
-Movie listing and details
-Cinema hall selection
-Seat reservation functionality
-Booking history tracking
+2. Function-Based Views (FBV) Endpoints
+2.1 GET /rest/fbv_list/
+This endpoint uses function-based views to list items.
 
-Technologies Used
-Django: The high-level Python web framework that encourages rapid development and clean, pragmatic design.
-Django REST Framework: A powerful toolkit for building Web APIs in Django applications.
-SQLite: A lightweight, disk-based database that doesn’t require a separate server process.
+2.2 GET /rest/fbv_pk/<int:pk>
+This endpoint uses function-based views to retrieve a specific item by its primary key.
 
-Setup Instructions
-Clone the repository: git clone <repository_url>
-Navigate to the project directory: cd cinema-tickets-reservation-system
-Install dependencies: pip install -r requirements.txt
-Apply database migrations: python manage.py migrate
-Create a superuser for admin access: python manage.py createsuperuser
-Run the development server: python manage.py runserver
+3. Class-Based Views (CBV) Endpoints
+3.1 GET, POST /rest/cbv
+This endpoint uses class-based views to handle list and create operations.
 
-Project Structure
-cinema_tickets: Django application directory containing models, views, serializers, and API endpoints.
-config: Django project configuration directory.
-templates: HTML templates for rendering the frontend views.
-static: Static files like CSS, JavaScript, and images.
+3.2 GET, PUT, DELETE /rest/cbv_pk/<int:pk>/
+This endpoint uses class-based views to handle retrieve, update, and delete operations for a specific item.
 
-API Endpoints
-    path('django/jsonresponsenomodel/', no_rest_no_model),
-    #2
-    path('django/jsonresponsefrommodel/',no_rest_from_model),
-    #3.1
-    path('rest/fbv_list/',fbv_list),
-    #3.2
-    path('rest/fbv_pk/<int:pk>', fbv_pk),
-    #4.1
-    path('rest/cbv',CBVList.as_view()),
-    #4.2
-    path('rest/cbv_pk/<int:pk>/',CBVPk.as_view()),
-    #5.1
-    path('rest/mixins/',Mixins.as_view()),
-    #5.2
-    path('rest/mixins_pk/<int:pk>/',MixinsPk.as_view()),
-    #6.1
-    path('rest/generics/',GenericListCreate.as_view()),
-    #6.2
-    path('rest/generic_pk/<int:pk>/',GenericPk.as_view()),
-    #7 Viewsets
-    path('rest/viewsets/',include(router.urls)),
-    #8 find movie
-    path('fbv/find_movie',find_movie),
-    #9 new reservation
-    path('new_reservation/',create_reservation),
-    #10 rest auth url
-    path('api-auth/',include('rest_framework.urls')), 
-    #11 Token Authentiaction
-    path('api-token-auth/', obtain_auth_token),
-    #12 post permissions
-    path('post/<int:pk>',Post_pk.as_view()),
-    path('post/',Post_pk.as_view()),
+4. Mixins Endpoints
+4.1 GET, POST /rest/mixins/
+This endpoint uses mixins to handle list and create operations.
 
-Authentication and Permissions
-This system employs token-based authentication using Django REST Framework's Token Authentication. Only authenticated users can make seat reservations. Additionally, custom permission classes are implemented to ensure that users can only view and modify their own bookings.
+4.2 GET, PUT, DELETE /rest/mixins_pk/<int:pk>/
+This endpoint uses mixins to handle retrieve, update, and delete operations for a specific item.
+
+5. Generics Endpoints
+5.1 GET, POST /rest/generics/
+This endpoint uses generic views to handle list and create operations.
+
+5.2 GET, PUT, DELETE /rest/generic_pk/<int:pk>/
+This endpoint uses generic views to handle retrieve, update, and delete operations for a specific item.
+
+6. Viewsets Endpoints
+6.1 GET, POST /rest/viewsets/
+This endpoint uses viewsets and routers to handle list and create operations.
+
+7. Find Movie Endpoint
+7.1 GET /fbv/find_movie
+This endpoint allows you to find a specific movie.
+
+8. New Reservation Endpoint
+8.1 POST /new_reservation/
+This endpoint enables you to create a new reservation.
+
+9. REST Auth URLs
+9.1 POST /api-auth/
+This endpoint provides URLs for REST framework authentication views.
+
+10. Token Authentication
+10.1 POST /api-token-auth/
+This endpoint allows users to obtain an authentication token.
+
+11. Post Permissions Endpoints
+11.1 GET, PUT, DELETE /post/<int:pk>
+This endpoint allows operations on a specific post based on user permissions.
+
+11.2 GET, POST /post/
+This endpoint allows listing and creating posts based on user permissions.
+
+Usage
+To utilize these endpoints, make HTTP requests to the respective URLs using appropriate methods (GET, POST, PUT, DELETE) based on the desired operation.
+
+Feel free to explore the code to understand the implementation details of the REST Framework, authentication classes, and permission classes used in this project. If you have any questions or need further assistance, don't hesitate to reach out. Happy coding!
+
